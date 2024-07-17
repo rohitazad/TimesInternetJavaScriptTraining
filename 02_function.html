@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: left;
+        }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-top: 10px;
+        }
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #333;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+        }
+        .question {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Functions: Detailed Explanation</h1>
+
+    <h2>What is a Function?</h2>
+    <p>
+        A function in JavaScript is a block of code designed to perform a particular task.
+        It is executed when "called" (or "invoked"). Functions allow you to reuse code: define the code once and use it many times.
+        Functions can take inputs, process them, and return an output.
+    </p>
+
+    <h2>Defining a Function</h2>
+    <h3>Function Declaration</h3>
+    <pre><code>function greet(name) {
+    return "Hello, " + name;
+}</code></pre>
+
+    <h3>Function Expression</h3>
+    <pre><code>let greet = function(name) {
+    return "Hello, " + name;
+};</code></pre>
+
+    <h3>Arrow Function (introduced in ES6)</h3>
+    <pre><code>let greet = (name) => {
+    return "Hello, " + name;
+};</code></pre>
+
+    <h3>Anonymous Function</h3>
+    <p>Functions can also be created without names and can be used as function expressions or immediately invoked function expressions (IIFE).</p>
+    <pre><code>(function() {
+    console.log("This is an IIFE");
+})();</code></pre>
+
+    <h2>Calling a Function</h2>
+    <p>To call a function, you simply use the function name followed by parentheses, optionally including arguments:</p>
+    <pre><code>greet("Alice"); // Output: "Hello, Alice"</code></pre>
+
+    <h2>Function Parameters and Arguments</h2>
+    <p><strong>Parameters</strong> are the names listed in the function definition. <strong>Arguments</strong> are the values received by the function when it is called.</p>
+    <pre><code>function add(a, b) {
+    return a + b;
+}
+
+let result = add(3, 5); // Output: 8</code></pre>
+
+    <h2>Return Statement</h2>
+    <p>Functions can return values using the <code>return</code> statement. If no return statement is specified, the function returns <code>undefined</code>.</p>
+    <pre><code>function multiply(a, b) {
+    return a * b;
+}
+
+let product = multiply(4, 5); // Output: 20</code></pre>
+
+    <h2>Function Scope</h2>
+    <p>Variables declared within a function are local to that function and cannot be accessed outside of it.</p>
+    <pre><code>function sayHello() {
+    let greeting = "Hello, World!";
+    console.log(greeting); // Output: Hello, World!
+}
+
+sayHello();
+console.log(greeting); // Error: greeting is not defined</code></pre>
+
+    <h2>Function Hoisting</h2>
+    <p>Function declarations are hoisted to the top of their containing scope. This means you can call a function before it is declared.</p>
+    <pre><code>console.log(square(5)); // Output: 25
+
+function square(num) {
+    return num * num;
+}</code></pre>
+
+    <p>However, function expressions are not hoisted.</p>
+    <pre><code>console.log(square(5)); // Error: square is not defined
+
+let square = function(num) {
+    return num * num;
+};</code></pre>
+
+    <h2>Higher-Order Functions</h2>
+    <p>Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.</p>
+    <pre><code>function processArray(arr, fn) {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(fn(arr[i]));
+    }
+    return result;
+}
+
+let numbers = [1, 2, 3, 4];
+let doubled = processArray(numbers, function(x) {
+    return x * 2;
+});
+
+console.log(doubled); // Output: [2, 4, 6, 8]</code></pre>
+
+    <h2>Closures</h2>
+    <p>A closure is a function that has access to its own scope, the scope of the outer function, and the global scope.</p>
+    <pre><code>function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log("Outer variable: " + outerVariable);
+        console.log("Inner variable: " + innerVariable);
+    };
+}
+
+let newFunction = outerFunction("outside");
+newFunction("inside");
+// Output:
+// Outer variable: outside
+// Inner variable: inside</code></pre>
+
+    <h2>Examples of Commonly Used Functions</h2>
+
+    <h3>Function to Calculate the Factorial of a Number</h3>
+    <pre><code>function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // Output: 120</code></pre>
+
+    <h3>Function to Check if a Number is Prime</h3>
+    <pre><code>function isPrime(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+
+    if (num % 2 === 0 || num % 3 === 0) return false;
+
+    for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+
+    return true;
+}
+
+console.log(isPrime(11)); // Output: true</code></pre>
+
+    <h3>Function to Generate Fibonacci Sequence</h3>
+    <pre><code>function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+for (let i = 0; i < 10; i++) {
+    console.log(fibonacci(i));
+}
+// Output: 0 1 1 2 3 5 8 13 21 34</code></pre>
+
+
+
+
+</body>
+</html>

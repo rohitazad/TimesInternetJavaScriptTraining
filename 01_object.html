@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects and Methods</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-top: 10px;
+        }
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #333;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Objects: Detailed Explanation for Training</h1>
+
+    <h2>What is an Object?</h2>
+    <p>
+        In JavaScript, an object is a collection of key-value pairs where each key is a string (also called a property name),
+        and each value can be any data type, including another object. Objects are used to store related data and functionalities together,
+        making them a fundamental part of JavaScript programming.
+    </p>
+
+    <h2>Creating Objects</h2>
+    <h3>Object Literals:</h3>
+    <pre><code>let person = {
+    name: "John",
+    age: 30,
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
+};</code></pre>
+
+    <h3>Using the <code>Object</code> Constructor:</h3>
+    <pre><code>let person = new Object();
+person.name = "John";
+person.age = 30;
+person.greet = function() {
+    console.log("Hello, my name is " + this.name);
+};</code></pre>
+
+    <h3>Using <code>Object.create()</code>:</h3>
+    <pre><code>let person = Object.create(Object.prototype);
+person.name = "John";
+person.age = 30;
+person.greet = function() {
+    console.log("Hello, my name is " + this.name);
+};</code></pre>
+
+    <h2>Accessing Object Properties</h2>
+    <h3>Dot Notation:</h3>
+    <pre><code>console.log(person.name); // Output: John</code></pre>
+
+    <h3>Bracket Notation:</h3>
+    <pre><code>console.log(person["name"]); // Output: John</code></pre>
+
+    <h2>Adding and Modifying Properties</h2>
+    <h3>Dot Notation:</h3>
+    <pre><code>person.job = "Developer";
+person.age = 31;</code></pre>
+
+    <h3>Bracket Notation:</h3>
+    <pre><code>person["job"] = "Developer";
+person["age"] = 31;</code></pre>
+
+    <h2>Deleting Properties</h2>
+    <pre><code>delete person.age;</code></pre>
+
+    <h2>Object Methods</h2>
+    <h3><code>Object.assign()</code></h3>
+    <p>Copies the values of all enumerable own properties from one or more source objects to a target object.</p>
+    <pre><code>let target = { a: 1, b: 2 };
+let source = { b: 4, c: 5 };
+let returnedTarget = Object.assign(target, source);
+console.log(target); // Output: { a: 1, b: 4, c: 5 }</code></pre>
+
+    <h3><code>Object.create()</code></h3>
+    <p>Creates a new object with the specified prototype object and properties.</p>
+    <pre><code>let person = {
+    isHuman: false,
+    printIntroduction: function() {
+        console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+    }
+};
+let me = Object.create(person);
+me.name = "Matthew";
+me.isHuman = true;
+me.printIntroduction();
+// Output: My name is Matthew. Am I human? true</code></pre>
+
+    <h3><code>Object.defineProperty()</code></h3>
+    <p>Defines a new property directly on an object or modifies an existing property.</p>
+    <pre><code>Object.defineProperty(person, "yearOfBirth", {
+    value: 1990,
+    writable: false
+});
+console.log(person.yearOfBirth); // Output: 1990</code></pre>
+
+    <h3><code>Object.defineProperties()</code></h3>
+    <p>Defines multiple new properties or modifies multiple existing properties.</p>
+    <pre><code>Object.defineProperties(person, {
+    yearOfBirth: {
+        value: 1990,
+        writable: false
+    },
+    job: {
+        value: "Developer",
+        writable: true
+    }
+});</code></pre>
+
+    <h3><code>Object.entries()</code></h3>
+    <p>Returns an array of a given object's own enumerable string-keyed property [key, value] pairs.</p>
+    <pre><code>let obj = { a: 1, b: 2, c: 3 };
+console.log(Object.entries(obj)); // Output: [["a", 1], ["b", 2], ["c", 3]]</code></pre>
+
+    <h3><code>Object.freeze()</code></h3>
+    <p>Freezes an object. A frozen object can no longer be changed.</p>
+    <pre><code>let obj = { prop: 42 };
+Object.freeze(obj);
+obj.prop = 33; // This will not change the value
+console.log(obj.prop); // Output: 42</code></pre>
+
+    <h3><code>Object.keys()</code></h3>
+    <p>Returns an array of a given object's own enumerable property names.</p>
+    <pre><code>let obj = { a: 1, b: 2, c: 3 };
+console.log(Object.keys(obj)); // Output: ["a", "b", "c"]</code></pre>
+
+    <h3><code>Object.values()</code></h3>
+    <p>Returns an array of a given object's own enumerable property values.</p>
+    <pre><code>let obj = { a: 1, b: 2, c: 3 };
+console.log(Object.values(obj)); // Output: [1, 2, 3]</code></pre>
+
+    <h3><code>Object.seal()</code></h3>
+    <p>Seals an object, preventing new properties from being added and marking all existing properties as non-configurable. Values of existing properties can still be changed.</p>
+    <pre><code>let obj = { prop: 42 };
+Object.seal(obj);
+obj.prop = 33; // Allowed
+delete obj.prop; // Not allowed
+console.log(obj.prop); // Output: 33</code></pre>
+
+    <h3><code>Object.is()</code></h3>
+    <p>Determines whether two values are the same value.</p>
+    <pre><code>console.log(Object.is(25, 25)); // Output: true
+console.log(Object.is("foo", "foo")); // Output: true
+console.log(Object.is([], [])); // Output: false</code></pre>
+
+    <h3><code>Object.hasOwnProperty()</code></h3>
+    <p>Returns a boolean indicating whether the object has the specified property as its own property (not inherited).</p>
+    <pre><code>let obj = { a: 1 };
+console.log(obj.hasOwnProperty("a")); // Output: true
+console.log(obj.hasOwnProperty("b")); // Output: false</code></pre>
+
+    <h3><code>Object.getOwnPropertyDescriptor()</code></h3>
+    <p>Returns a property descriptor for a named property on an object.</p>
+    <pre><code>let obj = { a: 1 };
+let descriptor = Object.getOwnPropertyDescriptor(obj, "a");
+console.log(descriptor); // Output: { value: 1, writable: true, enumerable: true, configurable: true }</code></pre>
+
+    <h3><code>Object.getOwnPropertyNames()</code></h3>
+    <p>Returns an array of all properties (including non-enumerable properties) found directly upon a given object.</p>
+    <pre><code>let obj = { a: 1, b: 2 };
+console.log(Object.getOwnPropertyNames(obj)); // Output: ["a", "b"]</code></pre>
+
+    <h3><code>Object.getPrototypeOf()</code></h3>
+    <p>Returns the prototype (i.e., the value of the internal [[Prototype]] property) of the specified object.</p>
+    <pre><code>let proto = {};
+let obj = Object.create(proto);
+console.log(Object.getPrototypeOf(obj) === proto); // Output: true</code></pre>
+
+    <h3><code>Object.setPrototypeOf()</code></h3>
+    <p>Sets the prototype (i.e., the internal [[Prototype]] property) of a specified object.</p>
+    <pre><code>let proto = {};
+let obj = {};
+Object.setPrototypeOf(obj, proto);
+console.log(Object.getPrototypeOf(obj) === proto); // Output: true</code></pre>
+
+</body>
+</html>

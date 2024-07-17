@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays: Methods and Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: left;
+        }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-top: 10px;
+        }
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #333;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: none;
+        }
+        code {
+            font-family: monospace;
+        }
+        .question {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById(id);
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Arrays: Methods and Examples</h1>
+
+    <div class="question" onclick="toggleAnswer('answer1')">
+        <h2>1. push()</h2>
+        <p>Adds one or more elements to the end of an array and returns the new length of the array.</p>
+        <pre id="answer1"><code>let fruits = ['apple', 'banana'];
+fruits.push('orange');
+console.log(fruits); // Output: ['apple', 'banana', 'orange']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer2')">
+        <h2>2. pop()</h2>
+        <p>Removes the last element from an array and returns that element.</p>
+        <pre id="answer2"><code>let fruits = ['apple', 'banana', 'orange'];
+let lastFruit = fruits.pop();
+console.log(lastFruit); // Output: 'orange'
+console.log(fruits); // Output: ['apple', 'banana']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer3')">
+        <h2>3. shift()</h2>
+        <p>Removes the first element from an array and returns that element.</p>
+        <pre id="answer3"><code>let fruits = ['apple', 'banana', 'orange'];
+let firstFruit = fruits.shift();
+console.log(firstFruit); // Output: 'apple'
+console.log(fruits); // Output: ['banana', 'orange']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer4')">
+        <h2>4. unshift()</h2>
+        <p>Adds one or more elements to the beginning of an array and returns the new length of the array.</p>
+        <pre id="answer4"><code>let fruits = ['banana', 'orange'];
+fruits.unshift('apple');
+console.log(fruits); // Output: ['apple', 'banana', 'orange']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer5')">
+        <h2>5. concat()</h2>
+        <p>Merges two or more arrays and returns a new array.</p>
+        <pre id="answer5"><code>let fruits = ['apple', 'banana'];
+let moreFruits = ['orange', 'mango'];
+let allFruits = fruits.concat(moreFruits);
+console.log(allFruits); // Output: ['apple', 'banana', 'orange', 'mango']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer6')">
+        <h2>6. join()</h2>
+        <p>Joins all elements of an array into a string and returns this string.</p>
+        <pre id="answer6"><code>let fruits = ['apple', 'banana', 'orange'];
+let fruitString = fruits.join(', ');
+console.log(fruitString); // Output: 'apple, banana, orange'
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer7')">
+        <h2>7. slice()</h2>
+        <p>Returns a shallow copy of a portion of an array into a new array object.</p>
+        <pre id="answer7"><code>let fruits = ['apple', 'banana', 'orange', 'mango'];
+let citrus = fruits.slice(1, 3);
+console.log(citrus); // Output: ['banana', 'orange']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer8')">
+        <h2>8. splice()</h2>
+        <p>Changes the contents of an array by removing or replacing existing elements and/or adding new elements.</p>
+        <pre id="answer8"><code>let fruits = ['apple', 'banana', 'orange', 'mango'];
+fruits.splice(2, 1, 'kiwi');
+console.log(fruits); // Output: ['apple', 'banana', 'kiwi', 'mango']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer9')">
+        <h2>9. indexOf()</h2>
+        <p>Returns the first index at which a given element can be found in the array, or -1 if it is not present.</p>
+        <pre id="answer9"><code>let fruits = ['apple', 'banana', 'orange'];
+let index = fruits.indexOf('banana');
+console.log(index); // Output: 1
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer10')">
+        <h2>10. lastIndexOf()</h2>
+        <p>Returns the last index at which a given element can be found in the array, or -1 if it is not present.</p>
+        <pre id="answer10"><code>let fruits = ['apple', 'banana', 'orange', 'banana'];
+let index = fruits.lastIndexOf('banana');
+console.log(index); // Output: 3
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer11')">
+        <h2>11. forEach()</h2>
+        <p>Executes a provided function once for each array element.</p>
+        <pre id="answer11"><code>let fruits = ['apple', 'banana', 'orange'];
+fruits.forEach(function(fruit) {
+    console.log(fruit);
+});
+// Output:
+// 'apple'
+// 'banana'
+// 'orange'
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer12')">
+        <h2>12. map()</h2>
+        <p>Creates a new array with the results of calling a provided function on every element in the calling array.</p>
+        <pre id="answer12"><code>let numbers = [1, 2, 3];
+let doubled = numbers.map(function(num) {
+    return num * 2;
+});
+console.log(doubled); // Output: [2, 4, 6]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer13')">
+        <h2>13. filter()</h2>
+        <p>Creates a new array with all elements that pass the test implemented by the provided function.</p>
+        <pre id="answer13"><code>let numbers = [1, 2, 3, 4, 5];
+let even = numbers.filter(function(num) {
+    return num % 2 === 0;
+});
+console.log(even); // Output: [2, 4]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer14')">
+        <h2>14. reduce()</h2>
+        <p>Executes a reducer function (that you provide) on each element of the array, resulting in a single output value.</p>
+        <pre id="answer14"><code>let numbers = [1, 2, 3, 4, 5];
+let sum = numbers.reduce(function(total, num) {
+    return total + num;
+}, 0);
+console.log(sum); // Output: 15
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer15')">
+        <h2>15. reduceRight()</h2>
+        <p>Applies a function against an accumulator and each value of the array (from right-to-left) to reduce it to a single value.</p>
+        <pre id="answer15"><code>let numbers = [1, 2, 3, 4, 5];
+let sum = numbers.reduceRight(function(total, num) {
+    return total + num;
+}, 0);
+console.log(sum); // Output: 15
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer16')">
+        <h2>16. find()</h2>
+        <p>Returns the value of the first element in the array that satisfies the provided testing function.</p>
+        <pre id="answer16"><code>let numbers = [1, 2, 3, 4, 5];
+let found = numbers.find(function(num) {
+    return num > 3;
+});
+console.log(found); // Output: 4
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer17')">
+        <h2>17. findIndex()</h2>
+        <p>Returns the index of the first element in the array that satisfies the provided testing function.</p>
+        <pre id="answer17"><code>let numbers = [1, 2, 3, 4, 5];
+let index = numbers.findIndex(function(num) {
+    return num > 3;
+});
+console.log(index); // Output: 3
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer18')">
+        <h2>18. includes()</h2>
+        <p>Determines whether an array includes a certain value among its entries, returning true or false as appropriate.</p>
+        <pre id="answer18"><code>let fruits = ['apple', 'banana', 'orange'];
+let hasBanana = fruits.includes('banana');
+console.log(hasBanana); // Output: true
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer19')">
+        <h2>19. some()</h2>
+        <p>Tests whether at least one element in the array passes the test implemented by the provided function.</p>
+        <pre id="answer19"><code>let numbers = [1, 2, 3, 4, 5];
+let hasEven = numbers.some(function(num) {
+    return num % 2 === 0;
+});
+console.log(hasEven); // Output: true
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer20')">
+        <h2>20. every()</h2>
+        <p>Tests whether all elements in the array pass the test implemented by the provided function.</p>
+        <pre id="answer20"><code>let numbers = [1, 2, 3, 4, 5];
+let allPositive = numbers.every(function(num) {
+    return num > 0;
+});
+console.log(allPositive); // Output: true
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer21')">
+        <h2>21. sort()</h2>
+        <p>Sorts the elements of an array in place and returns the array.</p>
+        <pre id="answer21"><code>let fruits = ['banana', 'apple', 'orange'];
+fruits.sort();
+console.log(fruits); // Output: ['apple', 'banana', 'orange']
+
+let numbers = [4, 2, 5, 1, 3];
+numbers.sort(function(a, b) {
+    return a - b;
+});
+console.log(numbers); // Output: [1, 2, 3, 4, 5]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer22')">
+        <h2>22. reverse()</h2>
+        <p>Reverses the order of the elements in an array in place.</p>
+        <pre id="answer22"><code>let fruits = ['apple', 'banana', 'orange'];
+fruits.reverse();
+console.log(fruits); // Output: ['orange', 'banana', 'apple']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer23')">
+        <h2>23. flat()</h2>
+        <p>Creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.</p>
+        <pre id="answer23"><code>let nestedArray = [1, [2, [3, [4]], 5]];
+let flatArray = nestedArray.flat(2);
+console.log(flatArray); // Output: [1, 2, 3, [4], 5]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer24')">
+        <h2>24. flatMap()</h2>
+        <p>First maps each element using a mapping function, then flattens the result into a new array.</p>
+        <pre id="answer24"><code>let numbers = [1, 2, 3, 4];
+let doubledAndFlattened = numbers.flatMap(num => [num * 2]);
+console.log(doubledAndFlattened); // Output: [2, 4, 6, 8]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer25')">
+        <h2>25. from()</h2>
+        <p>Creates a new, shallow-copied Array instance from an array-like or iterable object.</p>
+        <pre id="answer25"><code>let arrayLike = 'hello';
+let array = Array.from(arrayLike);
+console.log(array); // Output: ['h', 'e', 'l', 'l', 'o']
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer26')">
+        <h2>26. isArray()</h2>
+        <p>Determines whether the passed value is an Array.</p>
+        <pre id="answer26"><code>console.log(Array.isArray([1, 2, 3])); // Output: true
+console.log(Array.isArray('hello')); // Output: false
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer27')">
+        <h2>27. of()</h2>
+        <p>Creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments.</p>
+        <pre id="answer27"><code>let array = Array.of(1, 2, 3);
+console.log(array); // Output: [1, 2, 3]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer28')">
+        <h2>28. fill()</h2>
+        <p>Fills all the elements of an array from a start index to an end index with a static value.</p>
+        <pre id="answer28"><code>let array = [1, 2, 3, 4, 5];
+array.fill(0, 2, 4);
+console.log(array); // Output: [1, 2, 0, 0, 5]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer29')">
+        <h2>29. copyWithin()</h2>
+        <p>Shallow copies part of an array to another location in the same array and returns it, without modifying its length.</p>
+        <pre id="answer29"><code>let array = [1, 2, 3, 4, 5];
+array.copyWithin(0, 3, 4);
+console.log(array); // Output: [4, 2, 3, 4, 5]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer30')">
+        <h2>30. keys()</h2>
+        <p>Returns a new Array Iterator object that contains the keys for each index in the array.</p>
+        <pre id="answer30"><code>let array = ['a', 'b', 'c'];
+let iterator = array.keys();
+
+for (let key of iterator) {
+    console.log(key); // Output: 0 1 2
+}
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer31')">
+        <h2>31. values()</h2>
+        <p>Returns a new Array Iterator object that contains the values for each index in the array.</p>
+        <pre id="answer31"><code>let array = ['a', 'b', 'c'];
+let iterator = array.values();
+
+for (let value of iterator) {
+    console.log(value); // Output: 'a' 'b' 'c'
+}
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer32')">
+        <h2>32. entries()</h2>
+        <p>Returns a new Array Iterator object that contains the key/value pairs for each index in the array.</p>
+        <pre id="answer32"><code>let array = ['a', 'b', 'c'];
+let iterator = array.entries();
+
+for (let entry of iterator) {
+    console.log(entry); // Output: [0, 'a'] [1, 'b'] [2, 'c']
+}
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer33')">
+        <h2>33. findLast()</h2>
+        <p>Returns the value of the last element in the array that satisfies the provided testing function.</p>
+        <pre id="answer33"><code>let numbers = [1, 2, 3, 4, 5];
+let found = numbers.findLast(function(num) {
+    return num > 2;
+});
+console.log(found); // Output: 5
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer34')">
+        <h2>34. findLastIndex()</h2>
+        <p>Returns the index of the last element in the array that satisfies the provided testing function.</p>
+        <pre id="answer34"><code>let numbers = [1, 2, 3, 4, 5];
+let index = numbers.findLastIndex(function(num) {
+    return num > 2;
+});
+console.log(index); // Output: 4
+</code></pre>
+    </div>
+
+</body>
+</html>

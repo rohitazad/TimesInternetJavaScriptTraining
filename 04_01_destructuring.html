@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Destructuring: Methods and Examples</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: left;
+        }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-top: 10px;
+        }
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #333;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: none;
+        }
+        code {
+            font-family: monospace;
+        }
+        .question {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById(id);
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Destructuring: Methods and Examples</h1>
+
+    <div class="question" onclick="toggleAnswer('answer1')">
+        <h2>1. Array Destructuring</h2>
+        <p>Destructuring allows us to unpack values from arrays into distinct variables. This makes it easier to extract values from an array without having to access each item individually.</p>
+        <pre id="answer1"><code>// Basic Array Destructuring
+let fruits = ['apple', 'banana', 'orange'];
+let [first, second, third] = fruits;
+console.log(first);  // Output: 'apple'
+console.log(second); // Output: 'banana'
+console.log(third);  // Output: 'orange'
+
+// Skipping Items
+let [firstFruit, , thirdFruit] = fruits;
+console.log(firstFruit);  // Output: 'apple'
+console.log(thirdFruit);  // Output: 'orange'
+
+// Default Values
+let [a = 'apple', b = 'banana', c = 'cherry', d = 'date'] = ['kiwi'];
+console.log(a);  // Output: 'kiwi'
+console.log(b);  // Output: 'banana'
+console.log(c);  // Output: 'cherry'
+console.log(d);  // Output: 'date'
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer2')">
+        <h2>2. Object Destructuring</h2>
+        <p>Destructuring allows us to unpack values from objects into distinct variables. This can make your code cleaner and more readable when dealing with objects.</p>
+        <pre id="answer2"><code>// Basic Object Destructuring
+let person = { name: 'John', age: 30, city: 'New York' };
+let { name, age, city } = person;
+console.log(name); // Output: 'John'
+console.log(age);  // Output: 30
+console.log(city); // Output: 'New York'
+
+// Default Values
+let { firstName = 'John', lastName = 'Doe' } = { firstName: 'Jane' };
+console.log(firstName); // Output: 'Jane'
+console.log(lastName);  // Output: 'Doe'
+
+// Renaming Variables
+let { name: fullName, age: years } = person;
+console.log(fullName); // Output: 'John'
+console.log(years);    // Output: 30
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer3')">
+        <h2>3. Nested Destructuring</h2>
+        <p>Destructuring can be used to unpack nested values from arrays and objects, making it easier to work with complex data structures.</p>
+        <pre id="answer3"><code>// Nested Object Destructuring
+let person = {
+    name: 'John',
+    address: {
+        city: 'New York',
+        zip: 10001
+    }
+};
+let { name, address: { city, zip } } = person;
+console.log(name);  // Output: 'John'
+console.log(city);  // Output: 'New York'
+console.log(zip);   // Output: 10001
+
+// Nested Array Destructuring
+let numbers = [1, [2, 3], 4];
+let [one, [two, three], four] = numbers;
+console.log(one);   // Output: 1
+console.log(two);   // Output: 2
+console.log(three); // Output: 3
+console.log(four);  // Output: 4
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer4')">
+        <h2>4. Destructuring Function Parameters</h2>
+        <p>Destructuring can be used directly in function parameters to extract values from objects and arrays passed as arguments. This can simplify function signatures and make them more readable.</p>
+        <pre id="answer4"><code>// Function Parameter Destructuring with Objects
+function greet({ name, age }) {
+    console.log(`Hello, my name is ${name} and I am ${age} years old.`);
+}
+let person = { name: 'John', age: 30 };
+greet(person); // Output: 'Hello, my name is John and I am 30 years old.'
+
+// Function Parameter Destructuring with Arrays
+function sum([a, b, c]) {
+    return a + b + c;
+}
+let numbers = [1, 2, 3];
+console.log(sum(numbers)); // Output: 6
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer5')">
+        <h2>5. Rest and Spread with Destructuring</h2>
+        <p>The Rest and Spread operators can be used in destructuring to gather or spread elements. This can be particularly useful for working with dynamic numbers of arguments or properties.</p>
+        <pre id="answer5"><code>// Rest in Array Destructuring
+let [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(first);  // Output: 1
+console.log(second); // Output: 2
+console.log(rest);   // Output: [3, 4, 5]
+
+// Spread in Object Destructuring
+let { a, b, ...restProps } = { a: 1, b: 2, c: 3, d: 4 };
+console.log(a);        // Output: 1
+console.log(b);        // Output: 2
+console.log(restProps); // Output: {c: 3, d: 4}
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer6')">
+        <h2>6. Practical Examples</h2>
+        <p>Let's see some practical examples of destructuring in action. These examples show how destructuring can be used to simplify common tasks.</p>
+        <pre id="answer6"><code>// Swapping Variables
+let a = 1, b = 2;
+[a, b] = [b, a];
+console.log(a); // Output: 2
+console.log(b); // Output: 1
+
+// Extracting Values from Function Return
+function getCoordinates() {
+    return [12.34, 56.78];
+}
+let [lat, long] = getCoordinates();
+console.log(lat);  // Output: 12.34
+console.log(long); // Output: 56.78
+
+// Destructuring in Loops
+let people = [
+    { name: 'John', age: 30 },
+    { name: 'Jane', age: 25 }
+];
+for (let { name, age } of people) {
+    console.log(`${name} is ${age} years old.`);
+}
+// Output:
+// John is 30 years old.
+// Jane is 25 years old.
+</code></pre>
+    </div>
+
+</body>
+</html>

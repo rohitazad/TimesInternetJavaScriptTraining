@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM: Overview and Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: left;
+        }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-top: 10px;
+        }
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #333;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: none;
+        }
+        code {
+            font-family: monospace;
+        }
+        .question {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById(id);
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript DOM: Overview and Examples</h1>
+
+    <div class="question" onclick="toggleAnswer('answer1')">
+        <h2>1. What is the DOM?</h2>
+        <p>The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects, allowing languages like JavaScript to interact with the web page.</p>
+        <pre id="answer1"><code>// Example: Accessing the DOM
+document.body.style.backgroundColor = "lightblue";
+
+// Example: Changing the text of an element
+document.getElementById("demo").innerHTML = "Hello, World!";
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer2')">
+        <h2>2. Accessing DOM Elements</h2>
+        <p>JavaScript provides several methods to access DOM elements. Some common methods include <code>getElementById</code>, <code>getElementsByClassName</code>, <code>getElementsByTagName</code>, and <code>querySelector</code>.</p>
+        <pre id="answer2"><code>// Example: Accessing an element by ID
+let elementById = document.getElementById("myId");
+console.log(elementById);
+
+// Example: Accessing elements by class name
+let elementsByClassName = document.getElementsByClassName("myClass");
+console.log(elementsByClassName);
+
+// Example: Accessing elements by tag name
+let elementsByTagName = document.getElementsByTagName("p");
+console.log(elementsByTagName);
+
+// Example: Accessing an element using querySelector
+let elementByQuerySelector = document.querySelector(".myClass");
+console.log(elementByQuerySelector);
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer3')">
+        <h2>3. Modifying DOM Elements</h2>
+        <p>You can modify the content and attributes of DOM elements using JavaScript. Common operations include changing innerHTML, setting attributes, and manipulating styles.</p>
+        <pre id="answer3"><code>// Example: Changing innerHTML
+document.getElementById("myId").innerHTML = "New Content";
+
+// Example: Setting an attribute
+document.getElementById("myId").setAttribute("class", "newClass");
+
+// Example: Modifying styles
+document.getElementById("myId").style.color = "red";
+document.getElementById("myId").style.fontSize = "20px";
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer4')">
+        <h2>4. Creating and Removing DOM Elements</h2>
+        <p>You can create new DOM elements and remove existing ones using JavaScript. This is useful for dynamically updating the content of a web page.</p>
+        <pre id="answer4"><code>// Example: Creating a new element
+let newElement = document.createElement("div");
+newElement.innerHTML = "This is a new element";
+document.body.appendChild(newElement);
+
+// Example: Removing an existing element
+let elementToRemove = document.getElementById("myId");
+elementToRemove.parentNode.removeChild(elementToRemove);
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer5')">
+        <h2>5. Event Handling</h2>
+        <p>JavaScript allows you to handle events such as clicks, mouseovers, and key presses. You can add event listeners to DOM elements to execute code in response to these events.</p>
+        <pre id="answer5"><code>// Example: Adding a click event listener
+document.getElementById("myButton").addEventListener("click", function() {
+    alert("Button clicked!");
+});
+
+// Example: Adding a mouseover event listener
+document.getElementById("myDiv").addEventListener("mouseover", function() {
+    this.style.backgroundColor = "yellow";
+});
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer6')">
+        <h2>6. Practical Examples</h2>
+        <p>Let's see some practical examples of DOM manipulation in action. These examples demonstrate common tasks like changing content, adding elements, and handling events.</p>
+        <pre id="answer6"><code>// Example: Changing content on button click
+document.getElementById("changeContentButton").addEventListener("click", function() {
+    document.getElementById("content").innerHTML = "Content has been changed!";
+});
+
+// Example: Adding a new list item on button click
+document.getElementById("addItemButton").addEventListener("click", function() {
+    let newItem = document.createElement("li");
+    newItem.innerHTML = "New Item";
+    document.getElementById("myList").appendChild(newItem);
+});
+
+// Example: Removing an item on button click
+document.getElementById("removeItemButton").addEventListener("click", function() {
+    let list = document.getElementById("myList");
+    list.removeChild(list.lastElementChild);
+});
+</code></pre>
+    </div>
+
+    <h2>Questions and Answers</h2>
+
+    <div class="question" onclick="toggleAnswer('answerQ1')">
+        <h3>Q1: What is the DOM?</h3>
+        <pre id="answerQ1"><code>The DOM (Document Object Model) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects, allowing languages like JavaScript to interact with the web page.</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answerQ2')">
+        <h3>Q2: How can you access an element by its ID?</h3>
+        <pre id="answerQ2"><code>You can access an element by its ID using the <code>document.getElementById()</code> method. For example: <code>let element = document.getElementById("myId");</code></code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answerQ3')">
+        <h3>Q3: How do you change the innerHTML of an element?</h3>
+        <pre id="answerQ3"><code>You can change the innerHTML of an element using the <code>innerHTML</code> property. For example: <code>document.getElementById("myId").innerHTML = "New Content";</code></code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answerQ4')">
+        <h3>Q4: How can you add an event listener to a button click?</h3>
+        <pre id="answerQ4"><code>You can add an event listener to a button click using the <code>addEventListener()</code> method. For example: <code>document.getElementById("myButton").addEventListener("click", function() { alert("Button clicked!"); });</code></code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answerQ5')">
+        <h3>Q5: How do you remove a DOM element?</h3>
+        <pre id="answerQ5"><code>You can remove a DOM element using the <code>removeChild()</code> method. First, access the element's parent, then call <code>removeChild()</code> on it. For example: <code>let elementToRemove = document.getElementById("myId"); elementToRemove.parentNode.removeChild(elementToRemove);</code></code></pre>
+    </div>
+
+</body>
+</html>

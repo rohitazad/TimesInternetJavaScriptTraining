@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions - Questions and Answers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: left;
+        }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-top: 10px;
+        }
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #333;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: none;
+        }
+        code {
+            font-family: monospace;
+        }
+        .question {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById(id);
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Functions: Questions and Answers</h1>
+
+    <div class="question" onclick="toggleAnswer('answer1')">
+        <h2>1. How do you define a function in JavaScript?</h2>
+        <pre id="answer1"><code>// Function Declaration
+function greet(name) {
+    return "Hello, " + name;
+}
+
+// Function Expression
+let greet = function(name) {
+    return "Hello, " + name;
+};
+
+// Arrow Function
+let greet = (name) => {
+    return "Hello, " + name;
+};
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer2')">
+        <h2>2. What is the difference between parameters and arguments?</h2>
+        <pre id="answer2"><code>function add(a, b) { // a and b are parameters
+    return a + b;
+}
+
+let result = add(3, 5); // 3 and 5 are arguments
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer3')">
+        <h2>3. What does the <code>return</code> statement do in a function?</h2>
+        <pre id="answer3"><code>function multiply(a, b) {
+    return a * b; // Returns the product of a and b
+}
+
+let product = multiply(4, 5); // product is 20
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer4')">
+        <h2>4. What is a closure in JavaScript?</h2>
+        <pre id="answer4"><code>function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log("Outer variable: " + outerVariable);
+        console.log("Inner variable: " + innerVariable);
+    };
+}
+
+let newFunction = outerFunction("outside");
+newFunction("inside");
+// Output:
+// Outer variable: outside
+// Inner variable: inside
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer5')">
+        <h2>5. How are function declarations and function expressions different in terms of hoisting?</h2>
+        <pre id="answer5"><code>// Function Declaration (hoisted)
+console.log(square(5)); // Output: 25
+
+function square(num) {
+    return num * num;
+}
+
+// Function Expression (not hoisted)
+console.log(square(5)); // Error: square is not defined
+
+let square = function(num) {
+    return num * num;
+};
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer6')">
+        <h2>6. Write a function to check if a number is even or odd.</h2>
+        <pre id="answer6"><code>function isEven(num) {
+    return num % 2 === 0;
+}
+
+console.log(isEven(4)); // Output: true
+console.log(isEven(7)); // Output: false
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer7')">
+        <h2>7. Write a function to find the maximum number in an array.</h2>
+        <pre id="answer7"><code>function findMax(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+let numbers = [1, 5, 3, 9, 2];
+console.log(findMax(numbers)); // Output: 9
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer8')">
+        <h2>8. Write a function to reverse a string.</h2>
+        <pre id="answer8"><code>function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+
+console.log(reverseString("hello")); // Output: "olleh"
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer9')">
+        <h2>9. What is a higher-order function? Give an example.</h2>
+        <pre id="answer9"><code>function processArray(arr, fn) {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(fn(arr[i]));
+    }
+    return result;
+}
+
+let numbers = [1, 2, 3, 4];
+let doubled = processArray(numbers, function(x) {
+    return x * 2;
+});
+
+console.log(doubled); // Output: [2, 4, 6, 8]
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer10')">
+        <h2>10. Write a function to calculate the sum of all elements in an array.</h2>
+        <pre id="answer10"><code>function sumArray(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+let numbers = [1, 2, 3, 4, 5];
+console.log(sumArray(numbers)); // Output: 15
+</code></pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer('answer11')">
+        <h2>11. Generate a Random Number Between 1 and 100</h2>
+        <pre id="answer11"><code>function getRandomNumber() {
+    return Math.floor(Math.random() * 100) + 1;
+}
+
+console.log(getRandomNumber()); // Output: a random number between 1 and 100
+</code></pre>
+    </div>
+
+
+    <div class="question" onclick="toggleAnswer('answer12')">
+        <h2>12. Generate a Random Color</h2>
+        <pre id="answer12"><code>function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+console.log(getRandomColor()); // Output: a random hex color code
+</code></pre>
+    </div>
+
+
+    <div class="question" onclick="toggleAnswer('answer13')">
+        <h2>13. Create a Countdown Timer</h2>
+        <pre id="answer13"><code>function countdown(seconds) {
+    let counter = seconds;
+
+    const interval = setInterval(() => {
+        console.log(counter);
+        counter--;
+
+        if (counter < 0) {
+            clearInterval(interval);
+            console.log("Time's up!");
+        }
+    }, 1000);
+}
+
+countdown(5); // Output: 5 4 3 2 1 "Time's up!"
+</code></pre>
+    </div>
+</body>
+</html>
